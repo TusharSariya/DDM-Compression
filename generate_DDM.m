@@ -27,28 +27,29 @@ MSS_start = [0.001 0.002];
 %ylabel('km')
 
 %convert the map in delay-doppler coordinates
-[Xt,Yt,Zt]=map_in_DD(Ocean,d_path,dopptemp,centerdopp);                             
+[Xt,Yt,Zt]=map_in_DD(Ocean,d_path,dopptemp,centerdopp);                
 
 %compressed version
-Xt_ = Xt(19:19:end);
+Xt_ = Xt(6:6:end);
 Yt_ = Yt(5:5:end);
-Zt_ = Zt(5:5:end,19:19:end);
+Zt_ = Zt(5:5:end,6:6:end);
 
 
 % Plot 3D Delay Doppler Map
 figure;
 hold on
-subplot(2,2,1)
+%subplot(2,2,1)
 surf(Xt,Yt,Zt);
 view(90,90);
-axis([-5 200 -inf inf])
+%axis([-5 200 -inf inf])
 title('Delay Doppler Map')
 xlabel('Delay, (GPS L1 chips)*10')
 ylabel('Doppler, Hz')
 
 %compressed
+figure
 hold on
-subplot(2,2,2)
+%subplot(2,2,2)
 surf(Xt_,Yt_,Zt_);
 view(90,90);
 axis([-5 200 -inf inf])
