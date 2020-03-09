@@ -19,9 +19,9 @@ MSS_start = [0.001 0.002];
 [Xt,Yt,Zt]=map_in_DD(Ocean,d_path,dopptemp,centerdopp);                
 
 %compressed version
-Xt_ = Xt(1:20:end);
+Xt_ = Xt(6:3:end);
 Yt_ = Yt(5:5:end);
-Zt_ = Zt(5:5:end,1:20:end);
+Zt_ = Zt(5:5:end,6:3:end);
 max_pow = max(max(Zt_));
 Zt_11_bit = floor((Zt_/max_pow)*2048);
 % Plot 3D Delay Doppler Map
