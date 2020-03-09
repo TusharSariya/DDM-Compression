@@ -15,24 +15,13 @@ MSS_start = [0.001 0.002];
 %compute the map in spatial coordinates
 [L,M,Ocean,d_path,dopptemp,centerdopp]=map_in_space_new(tx_pos,tx_vel,rx_pos,rx_vel,MSS_start);
 
-% Plot 3D Ocean Power Map in Local Frame (centered at Specular Point)
-%figure;
-%hold on
-%surf(L,M,Ocean);
-%surf(L,M,d_path);
-%surf(L,M,dopptemp);
-%view(90,90);
-%title('Ocean Power Map, in Geophysical Reference Frame')
-%xlabel('km')
-%ylabel('km')
-
 %convert the map in delay-doppler coordinates
 [Xt,Yt,Zt]=map_in_DD(Ocean,d_path,dopptemp,centerdopp);                
 
 %compressed version
-Xt_ = Xt(6:6:end);
+Xt_ = Xt(1:20:end);
 Yt_ = Yt(5:5:end);
-Zt_ = Zt(5:5:end,6:6:end);
+Zt_ = Zt(5:5:end,1:20:end);
 
 
 % Plot 3D Delay Doppler Map
@@ -41,19 +30,17 @@ hold on
 %subplot(2,2,1)
 surf(Xt,Yt,Zt);
 view(90,90);
-%axis([-5 200 -inf inf])
-title('Delay Doppler Map')
+axis([-inf inf 4000 inf])
+title('Delay Doppler Map 1')
 xlabel('Delay, (GPS L1 chips)*10')
 ylabel('Doppler, Hz')
 
-%compressed
-figure
+figure;
 hold on
-%subplot(2,2,2)
+%subplot(2,2,1)
 surf(Xt_,Yt_,Zt_);
 view(90,90);
-axis([-5 200 -inf inf])
-title('Delay Doppler Map Compressed')
+title('Delay Doppler Map 2')
 xlabel('Delay, (GPS L1 chips)*10')
 ylabel('Doppler, Hz')
 
