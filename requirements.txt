@@ -3,7 +3,7 @@ asn1crypto==0.24.0
 astor==0.8.1
 backports.weakref==1.0.post1
 CherryPy==8.9.1
-cryptography==2.1.4
+cryptography==2.3
 enum34==1.1.6
 funcsigs==1.0.2
 futures==3.3.0
