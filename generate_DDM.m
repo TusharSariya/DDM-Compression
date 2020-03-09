@@ -22,9 +22,17 @@ MSS_start = [0.001 0.002];
 Xt_ = Xt(1:20:end);
 Yt_ = Yt(5:5:end);
 Zt_ = Zt(5:5:end,1:20:end);
-
-
+max_pow = max(max(Zt_));
+Zt_11_bit = floor((Zt_/max_pow)*2048);
 % Plot 3D Delay Doppler Map
+
+dlmwrite('DMMRaw.txt',Zt_11_bit,'delimiter','\t','newline','pc');
+
+writematrix(Zt_11_bit,'DMMRaw2.txt');
+
+fileID = fopen('DMMRaw3.txt','w');
+fwrite(fileID,Zt_11_bit);
+imshow(Zt_11_bit,[]);
 figure;
 hold on
 %subplot(2,2,1)
